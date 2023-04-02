@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../img/1.png";
-const ProductCard = () => {
+import img2 from "../img/2.png";
+import img3 from "../img/3.png";
+import img4 from "../img/4.png";
+const ProductCard = (props) => {
+  const images = [img, img2, img3, img4];
   return (
-    <div className="bg-gray-100 rounded p-5 hover:bg-gray-200 ">
+    <div className="bg-gray-100 rounded p-2 hover:bg-gray-200 ">
       <div className=" overflow-hidden">
         <img
-          className=" w-auto h-40 mx-auto hover:scale-150 duration-300"
-          src={img}
+          className=" w-auto h-40 mx-auto hover:scale-150 duration-300 rounded"
+          src={images[props.id]}
           alt=""
         />
       </div>
