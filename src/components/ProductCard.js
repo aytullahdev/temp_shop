@@ -1,15 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
 import img3 from "../img/3.png";
 import img4 from "../img/4.png";
 const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
+  const [isZoom, setIsZoom] = useState(true);
   return (
-    <div className="bg-white  rounded shadow-sm p-2 cursor-pointer ">
-      <div className=" overflow-hidden">
+    <div className=" bg-slate-100 hover:bg-slate-200  rounded shadow-sm p-2 cursor-pointer ">
+      <div className=" relative overflow-hidden">
+        {!isZoom && (
+          <button
+            onClick={() => {
+              setIsZoom(true);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 absolute right-0 top-0"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+              />
+            </svg>
+          </button>
+        )}
+        {isZoom && (
+          <button
+            onClick={() => {
+              setIsZoom(false);
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 absolute z-50 right-0 top-0"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"
+              />
+            </svg>
+          </button>
+        )}
         <img
-          className=" w-auto h-40 mx-auto scale-150 hover:scale-100 duration-300 rounded"
+          className={` w-auto h-40 mx-auto  duration-300 rounded ${
+            isZoom ? "scale-150" : "scale-100"
+          }`}
           src={images[props.id]}
           alt=""
         />
@@ -20,9 +67,6 @@ const ProductCard = (props) => {
           Premium Soft cotton SLEEVES
         </p>
         <div className="grid grid-cols-2  text-[10px] font-normal flex-wrap mt-2  ">
-          {/* <span className="">
-            <span className="font-semibold ">DUPATTA:</span> Soft cotton
-          </span> */}
           <span className="">
             <span className="font-semibold ">Price: </span>
             {"  "}
