@@ -15,11 +15,11 @@ const ProductCard = (props) => {
         />
       </div>
       <div>
-        <p className="text-[7px]">
-          <span className="font-semibold">FRONT BACK </span>Digital Print
+        <p className="text-[12px] font-semibold">
+          <span className="font-bold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="grid grid-cols-2 text-[5px] flex-wrap py-3 gap-1 ">
+        <div className="grid grid-cols-2 text-[8px] flex-wrap py-3 gap-1 ">
           <span className=" bg-white/80 hover:bg-green-500 hover:text-white backdrop-blur-lg rounded  p-1">
             <span className="font-bold ">Dupatta:</span> Soft cotton
           </span>
