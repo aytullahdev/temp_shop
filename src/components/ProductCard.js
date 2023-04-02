@@ -5,9 +5,9 @@ import img3 from "../img/3.png";
 import img4 from "../img/4.png";
 const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
-  const [isZoom, setIsZoom] = useState(true);
+  const [isZoom, setIsZoom] = useState(props.zoom);
   return (
-    <div className=" bg-slate-100 hover:bg-slate-200  rounded shadow-sm p-2 cursor-pointer ">
+    <div className=" select-none bg-slate-100 hover:bg-slate-200  rounded shadow-sm p-2 cursor-pointer ">
       <div className=" relative overflow-hidden">
         {!isZoom && (
           <button
@@ -43,7 +43,7 @@ const ProductCard = (props) => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="w-6 h-6 absolute z-50 right-0 top-0"
+              class="w-6 h-6 absolute z-40 right-0 top-0"
             >
               <path
                 stroke-linecap="round"
@@ -66,10 +66,9 @@ const ProductCard = (props) => {
           <span className="font-semibold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="grid grid-cols-2  text-[10px] font-normal flex-wrap mt-2  ">
+        <div className="  text-[10px] font-normal  mt-2  ">
           <span className="">
-            <span className="font-semibold ">Price: </span>
-            {"  "}
+            <span className="font-semibold ">Price: </span>{" "}
             <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
           </span>
         </div>

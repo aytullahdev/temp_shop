@@ -7,14 +7,14 @@ const Products = () => {
       <h1 className="text-md uppercase font-bold py-2">Women Three PCS</h1>
       {/* Card container */}
       <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
-        <ProductCard id="1" />
-        <ProductCard id="0" />
-        <ProductCard id="2" />
-        <ProductCard id="3" />
-        <ProductCard id="1" />
-        <ProductCard id="0" />
-        <ProductCard id="2" />
-        <ProductCard id="3" />
+        <ProductCard id="1" zoom={false} />
+        <ProductCard id="0" zoom={true} />
+        <ProductCard id="2" zoom={false} />
+        <ProductCard id="3" zoom={false} />
+        <ProductCard id="1" zoom={true} />
+        <ProductCard id="0" zoom={false} />
+        <ProductCard id="2" zoom={true} />
+        <ProductCard id="3" zoom={false} />
       </div>
     </div>
   );
