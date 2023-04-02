@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
   return (
-    <div className="bg-blue-900 py-5 flex justify-around items-center">
+    <div className="bg-blue-900 py-5 flex select-none justify-around items-center">
       {/* Slide Navbar */}
       <div
         className={`h-[100vh] w-2/3 ${

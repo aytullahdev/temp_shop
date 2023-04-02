@@ -7,7 +7,7 @@ const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
   const [isZoom, setIsZoom] = useState(props.zoom);
   return (
-    <div className=" select-none bg-slate-100 hover:bg-slate-200  rounded shadow-sm p-2 cursor-pointer ">
+    <div className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer ">
       <div className=" relative overflow-hidden">
         {!isZoom && (
           <button
