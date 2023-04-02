@@ -5,21 +5,21 @@ const ProductCard = () => {
     <div className="bg-gray-100 rounded p-5 hover:bg-gray-200 ">
       <div className=" overflow-hidden">
         <img
-          className=" h-60 mx-auto hover:scale-150 duration-300"
+          className=" w-auto h-40 mx-auto hover:scale-150 duration-300"
           src={img}
           alt=""
         />
       </div>
       <div>
-        <p className="text-sm">
+        <p className="text-[7px]">
           <span className="font-semibold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="grid grid-cols-2 text-[10px] flex-wrap py-3 gap-1 ">
+        <div className="grid grid-cols-2 text-[5px] flex-wrap py-3 gap-1 ">
           <span className=" bg-white/80 hover:bg-green-500 hover:text-white backdrop-blur-lg rounded  p-1">
             <span className="font-bold ">Dupatta:</span> Soft cotton
           </span>
-          <span className=" bg-white/80 backdrop-blur-lg rounded p-1">
+          <span className=" bg-white/80 backdrop-blur-lg rounded p-1 hover:bg-green-500 hover:text-white">
             <span className="font-bold">TROUSER:</span> Soft cotton
           </span>
         </div>
