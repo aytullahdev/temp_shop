@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 const Navbar = () => {
-  const [toggleNav, setToggleNav] = useState(true);
+  const [toggleNav, setToggleNav] = useState(false);
   return (
     <div className="bg-blue-900 py-5 flex justify-around items-center">
       {/* Slide Navbar */}
       <div
         className={`h-[100vh] w-2/3 ${
           toggleNav ? "left-0" : "left-[-100%]"
-        }  fixed  p-10 text-white top-0 z-50 bg-blue-800 duration-300 `}
+        }  fixed  p-10 text-white top-0 z-50 bg-blue-800/60 backdrop-blur-lg duration-300 `}
       >
         <button
           onClick={() => {
@@ -21,7 +21,7 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-10 h-10 absolute right-5 top-5 rounded bg-white/20 backdrop-blur-md"
+            class="w-6 h-6 absolute right-5 top-5 rounded bg-white/20 backdrop-blur-md"
           >
             <path
               stroke-linecap="round"
@@ -30,12 +30,12 @@ const Navbar = () => {
             />
           </svg>
         </button>
-        <div className="text-2xl">
+        <div className="text-xl">
           <h1>Catagory</h1>
-          <p className="pl-5 py-1 my-3 text-[20px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+          <p className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
             Man Collection
           </p>
-          <p className="pl-5 py-1 my-3 text-[20px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+          <p className="pl-5 py-1 my-2   text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
             Woman Collection
           </p>
         </div>
