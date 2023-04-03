@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
   return (
@@ -32,9 +32,12 @@ const Navbar = () => {
         </button>
         <div className="text-xl">
           <h1>Catagory</h1>
-          <p className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+          <Link
+            to="/catagory/man"
+            className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded"
+          >
             Man Collection
-          </p>
+          </Link>
           <p className="pl-5 py-1 my-2   text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
             Woman Collection
           </p>
@@ -59,9 +62,9 @@ const Navbar = () => {
           />
         </svg>
       </button>
-      <h1 className=" uppercase text-white text-xl text-center  ">
+      <Link to="/" className=" uppercase text-white text-xl text-center  ">
         aristocracy
-      </h1>
+      </Link>
       <div className="flex justify-between space-x-3 items-center">
         <div className="p-1 rounded hover:backdrop-blur-sm hover:bg-white/10">
           <svg

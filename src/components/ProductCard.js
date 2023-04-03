@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
 import img3 from "../img/3.png";
@@ -7,7 +8,10 @@ const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
   const [isZoom, setIsZoom] = useState(props.zoom);
   return (
-    <div className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer ">
+    <Link
+      to={`/product/${props.id}`}
+      className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer "
+    >
       <div className=" relative overflow-hidden">
         {!isZoom && (
           <button
@@ -73,7 +77,7 @@ const ProductCard = (props) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
