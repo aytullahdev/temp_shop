@@ -8,10 +8,7 @@ const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
   const [isZoom, setIsZoom] = useState(props.zoom);
   return (
-    <Link
-      to={`/product/${props.id}`}
-      className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer "
-    >
+    <div className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer ">
       <div className=" relative overflow-hidden">
         {!isZoom && (
           <button
@@ -70,14 +67,20 @@ const ProductCard = (props) => {
           <span className="font-semibold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="  text-[10px] font-normal  mt-2  ">
-          <span className="">
+        <div className="flex justify-around items-center  text-[10px] font-normal  mt-2  ">
+          <span className=" ">
             <span className="font-semibold ">Price: </span>{" "}
             <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
           </span>
+          <Link
+            to={`/product/${props.id}`}
+            className="bg-blue-900 px-5 py-1 rounded text-white"
+          >
+            DETAILS
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
