@@ -74,7 +74,7 @@ const ProductCard = (props) => {
           </span>
           <Link
             to={`/product/${props.id}`}
-            className="bg-blue-900 px-5 py-1 rounded text-white"
+            className="bg-blue-900 px-2 py-1 rounded text-white"
           >
             DETAILS
           </Link>
