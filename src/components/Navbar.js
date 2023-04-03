@@ -82,7 +82,7 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div className="p-1 rounded">
+        <div className="p-1 rounded hidden lg:block">
           <div class="relative rounded-2xl   sm:mx-auto sm:max-w-lg sm:px-5">
             <div class="mx-auto max-w-md">
               <form action="" class="relative mx-auto w-max">
