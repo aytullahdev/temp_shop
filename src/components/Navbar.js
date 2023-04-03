@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Navbar = () => {
+  const [toggleNav, setToggleNav] = useState(false);
   return (
-    <div className="bg-blue-900 py-5 flex justify-around items-center">
-      <div className=" p-1 rounded hover:backdrop-blur-sm hover:bg-white/10">
+    <div className="bg-blue-900 py-5 flex select-none justify-around items-center">
+      {/* Slide Navbar */}
+      <div
+        className={`h-[100vh] w-2/3 ${
+          toggleNav ? "left-0" : "left-[-100%]"
+        }  fixed  p-10 text-white top-0 z-50 bg-blue-800/60 backdrop-blur-lg duration-300 `}
+      >
+        <button
+          onClick={() => {
+            setToggleNav(false);
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 absolute right-5 top-5 rounded bg-white/20 backdrop-blur-md"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div className="text-xl">
+          <h1>Catagory</h1>
+          <p className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+            Man Collection
+          </p>
+          <p className="pl-5 py-1 my-2   text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+            Woman Collection
+          </p>
+        </div>
+      </div>
+      <button
+        onClick={() => {
+          setToggleNav(true);
+        }}
+        className=" p-1 rounded hover:backdrop-blur-sm hover:bg-white/10"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -16,7 +58,7 @@ const Navbar = () => {
             clip-rule="evenodd"
           />
         </svg>
-      </div>
+      </button>
       <h1 className=" uppercase text-white text-xl text-center  ">
         aristocracy
       </h1>
