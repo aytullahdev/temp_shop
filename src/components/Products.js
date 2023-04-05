@@ -6,7 +6,7 @@ const Products = () => {
     <div className="py-2 px-2">
       <h1 className="text-md uppercase font-bold py-2">Women Three PCS</h1>
       {/* Card container */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
         <ProductCard id="1" zoom={false} />
         <ProductCard id="0" zoom={true} />
         <ProductCard id="2" zoom={false} />
