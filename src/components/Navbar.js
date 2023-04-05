@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [toggleNav, setToggleNav] = useState(false);
   return (
@@ -32,9 +32,12 @@ const Navbar = () => {
         </button>
         <div className="text-xl">
           <h1>Catagory</h1>
-          <p className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
+          <Link
+            to="/catagory/man"
+            className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded"
+          >
             Man Collection
-          </p>
+          </Link>
           <p className="pl-5 py-1 my-2   text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded">
             Woman Collection
           </p>
@@ -59,9 +62,9 @@ const Navbar = () => {
           />
         </svg>
       </button>
-      <h1 className=" uppercase text-white text-xl text-center  ">
+      <Link to="/" className=" uppercase text-white text-xl text-center  ">
         aristocracy
-      </h1>
+      </Link>
       <div className="flex justify-between space-x-3 items-center">
         <div className="p-1 rounded hover:backdrop-blur-sm hover:bg-white/10">
           <svg
@@ -79,21 +82,31 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        <div className="p-1 rounded hover:backdrop-blur-sm hover:bg-white/10">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 text-white"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg>
+        <div className="p-1 rounded hidden lg:block">
+          <div class="relative rounded-2xl   sm:mx-auto sm:max-w-lg sm:px-5">
+            <div class="mx-auto max-w-md">
+              <form action="" class="relative mx-auto w-max">
+                <input
+                  type="search"
+                  class="peer cursor-pointer text-white relative z-10 h-8 w-8 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-white focus:pl-16 focus:pr-4"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="absolute inset-y-0 my-auto h-5 w-12 peer-focus:border-white peer-focus:stroke-white text-white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

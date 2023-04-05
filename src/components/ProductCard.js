@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
 import img3 from "../img/3.png";
@@ -66,11 +67,17 @@ const ProductCard = (props) => {
           <span className="font-semibold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="  text-[10px] font-normal  mt-2  ">
-          <span className="">
+        <div className="flex justify-around items-center  text-[10px] font-normal  mt-2  ">
+          <span className=" ">
             <span className="font-semibold ">Price: </span>{" "}
             <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
           </span>
+          <Link
+            to={`/product/${props.id}`}
+            className="bg-blue-900 px-2 py-1 rounded text-white"
+          >
+            DETAILS
+          </Link>
         </div>
       </div>
     </div>
