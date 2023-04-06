@@ -6,7 +6,6 @@ import img3 from "../img/3.png";
 import img4 from "../img/4.png";
 const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
-  const [isZoom, setIsZoom] = useState(false);
 
   return (
     <Link
@@ -59,9 +58,7 @@ const ProductCard = (props) => {
           </button>
         )} */}
         <img
-          className={` w-auto h-40 mx-auto  duration-300 rounded ${
-            isZoom ? "scale-150" : "scale-100"
-          }`}
+          className={` w-auto h-40 mx-auto  duration-300 rounded`}
           src={images[props.id]}
           alt=""
         />
