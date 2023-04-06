@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
@@ -6,11 +6,15 @@ import img3 from "../img/3.png";
 import img4 from "../img/4.png";
 const ProductCard = (props) => {
   const images = [img, img2, img3, img4];
-  const [isZoom, setIsZoom] = useState(props.zoom);
+  const [isZoom, setIsZoom] = useState(false);
+
   return (
-    <div className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer ">
+    <Link
+      to={`/product/${props.id}`}
+      className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer "
+    >
       <div className=" relative overflow-hidden">
-        {!isZoom && (
+        {/* {!isZoom && (
           <button
             onClick={() => {
               setIsZoom(true);
@@ -53,7 +57,7 @@ const ProductCard = (props) => {
               />
             </svg>
           </button>
-        )}
+        )} */}
         <img
           className={` w-auto h-40 mx-auto  duration-300 rounded ${
             isZoom ? "scale-150" : "scale-100"
@@ -67,20 +71,20 @@ const ProductCard = (props) => {
           <span className="font-semibold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="flex justify-around items-center  text-[10px] font-normal  mt-2  ">
-          <span className=" ">
-            <span className="font-semibold ">Price: </span>{" "}
+        <div className="  text-[12px] font-normal  mt-2  ">
+          <span className=" flex justify-around items-center">
+            <span className="font-bold ">Price: </span>{" "}
             <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
           </span>
-          <Link
+          {/* <Link
             to={`/product/${props.id}`}
             className="bg-blue-900 px-2 py-1 rounded text-white"
           >
             DETAILS
-          </Link>
+          </Link> */}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

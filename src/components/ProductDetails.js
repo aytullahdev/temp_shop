@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
@@ -8,13 +8,66 @@ import { Accordion } from "flowbite-react";
 import ProductCard from "./ProductCard";
 const ProductDetails = () => {
   const { id } = useParams();
+  const [isZoom, setIsZoom] = useState(false);
   const images = [img, img2, img3, img4];
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
-    <div>
+    <div id="product">
       <div className="grid md:grid-cols-2 gap-4 mx-5 mt-5">
-        <div className="flex justify-center">
-          <img className="px-4" src={images[id]} alt="" />
+        <div className="flex justify-center relative">
+          {!isZoom && (
+            <button
+              onClick={() => {
+                setIsZoom(true);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 absolute right-0 top-0"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+                />
+              </svg>
+            </button>
+          )}
+          {isZoom && (
+            <button
+              onClick={() => {
+                setIsZoom(false);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 absolute z-40 right-0 top-0"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"
+                />
+              </svg>
+            </button>
+          )}
+          <img
+            className={` px-4  duration-300 rounded ${
+              isZoom ? "scale-150" : "scale-100"
+            }`}
+            src={images[id]}
+            alt=""
+          />
         </div>
         <div>
           <h1 className="font-semibold text-3xl mb-3">
@@ -46,7 +99,10 @@ const ProductDetails = () => {
             <h1 className="mb-3 text-xl font-semibold">Quantity</h1>
             <div className="border-2 border-black flex w-2/4">
               <button className="w-[50px] text-2xl">+</button>
-              <input className="w-[50px] text-center border-x-2 border-y-0 border-black" type="number" />
+              <input
+                className="w-[50px] text-center border-x-2 border-y-0 border-black"
+                type="number"
+              />
               <button className="w-[50px] text-2xl">-</button>
             </div>
           </div>
