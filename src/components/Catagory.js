@@ -18,6 +18,12 @@ const Catagory = () => {
         >
           ADD PRODUCT
         </Link>
+        <Link
+          to="/allproduct"
+          className="bg-gradient-to-r from-fuchsia-600 to-pink-600 flex justify-center items-center p-5 text-white rounded"
+        >
+          ALL PRODUCT
+        </Link>
       </div>
     </div>
   );

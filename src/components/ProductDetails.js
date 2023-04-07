@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import img from "../img/1.png";
-import img2 from "../img/2.png";
-import img3 from "../img/3.png";
-import img4 from "../img/4.png";
 import { Accordion } from "flowbite-react";
 import parser from "html-react-parser";
 
@@ -11,11 +7,11 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [isZoom, setIsZoom] = useState(false);
   const [product, setProduct] = useState({});
-  const images = [img, img2, img3, img4];
+
   useEffect(() => {
     if (id) {
       window.scrollTo(0, 0);
-      fetch(`http://localhost:9003/api/product/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/product/${id}`)
         .then((response) => response.json())
         .then((data) => {
           setProduct(data);
@@ -24,10 +20,11 @@ const ProductDetails = () => {
       return () => {};
     }
   }, [id]);
+  const { title, price, category_id, description, img, stock } = product;
   return (
     <div id="product">
       <div className="grid md:grid-cols-2 gap-4 mx-5 mt-5">
-        <div className="flex justify-center relative  h-fit">
+        <div className="flex justify-center relative  h-fit overflow-hidden">
           {!isZoom && (
             <button
               onClick={() => {
@@ -76,18 +73,16 @@ const ProductDetails = () => {
             className={` px-4  duration-300 rounded ${
               isZoom ? "scale-150" : "scale-100"
             }`}
-            src={images[id]}
+            src={img}
             alt=""
           />
         </div>
         <div className="">
-          <h1 className="font-semibold text-3xl mb-3">
-            {product && product.title}
-          </h1>
+          <h1 className="font-semibold text-3xl mb-3">{title}</h1>
           <h3 className="font-bold text-xl mb-2">
-            Availability: <span className="font-normal">In Stock</span>
+            Availability: <span className="font-normal">{stock}</span>
           </h3>
-          <h1 className="text-blue-700 font-bold text-3xl">TK 1500</h1>
+          <h1 className="text-blue-700 font-bold text-3xl">TK {price}</h1>
           <span>Tax Included</span>
           <div className="mt-5">
             <label
@@ -159,10 +154,8 @@ const ProductDetails = () => {
       <div className="mx-2 lg:mx-5">
         <div className="my-3 ">
           <h1 className="mb-3 text-xl font-semibold">Product Details</h1>
-          <div className="jodit-wysiwyg">
-            {product && product.description && (
-              <div>{parser(product.description)}</div>
-            )}
+          <div className="jodit-wysiwyg prose">
+            {description && <div>{parser(description)}</div>}
           </div>
           <div>
             <h1 className="text-xl lg:3xl  font-bold py-4">

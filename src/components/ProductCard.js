@@ -1,15 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img from "../img/1.png";
-import img2 from "../img/2.png";
-import img3 from "../img/3.png";
-import img4 from "../img/4.png";
-const ProductCard = (props) => {
-  const images = [img, img2, img3, img4];
+
+const ProductCard = ({ product }) => {
+  const { id, title, price, img } = product;
 
   return (
     <Link
-      to={`/product/${props.id}`}
+      to={`/product/${id}`}
       className=" select-none bg-slate-100 hover:bg-slate-200   rounded shadow-sm p-2 cursor-pointer "
     >
       <div className=" relative overflow-hidden">
@@ -59,19 +56,18 @@ const ProductCard = (props) => {
         )} */}
         <img
           className={` w-auto h-40 mx-auto  duration-300 rounded`}
-          src={images[props.id]}
+          src={img}
           alt=""
         />
       </div>
       <div>
-        <p className="text-[10px]">
-          <span className="font-semibold">FRONT BACK </span>Digital Print
-          Premium Soft cotton SLEEVES
-        </p>
+        <p className="text-[10px]">{title}</p>
         <div className="  text-[12px] font-normal  mt-2  ">
           <span className=" flex justify-around items-center">
             <span className="font-bold ">Price: </span>{" "}
-            <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
+            <span className=" bg-gray-500  text-white rounded p-1">
+              {price}TK
+            </span>
           </span>
           {/* <Link
             to={`/product/${props.id}`}

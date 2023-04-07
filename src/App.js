@@ -8,6 +8,10 @@ import ProductDetails from "./components/ProductDetails";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import AddProduct from "./admin/AddProduct";
+import UploadImage from "./admin/UploadImage";
+import "react-toastify/dist/ReactToastify.css";
+import EditProduct from "./admin/EditProduct";
+import Allproduct from "./admin/Allproduct";
 axios.interceptors.response.use(
   (res) => res,
   (err) => {
@@ -23,6 +27,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/fileupload" element={<UploadImage />} />
+        <Route path="/editproduct/:id" element={<EditProduct />} />
+        <Route path="/allproduct" element={<Allproduct />} />
         <Route
           path="*"
           element={

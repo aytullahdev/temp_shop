@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import TextEditor from "./TextEditor";
 import UploadImage from "./UploadImage";
-
-const AddProduct = () => {
+const EditProduct = () => {
+  const { id } = useParams();
   const [product, setProduct] = useState({
     title: "",
     description: "",
@@ -16,19 +16,9 @@ const AddProduct = () => {
     img3: "",
     sku: "",
     note: "",
-    stock: "In Stock",
+    stock: "",
   });
   const [category, setCategory] = useState(null);
-  const navigate = useNavigate();
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/product/category`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCategory(data);
-        // console.log(data);
-      });
-    return () => {};
-  }, []);
   const setDescription = (data) => {
     setProduct((prev) => ({ ...prev, description: data }));
   };
@@ -41,32 +31,36 @@ const AddProduct = () => {
   const set3rdImg = (link) => {
     setProduct((prev) => ({ ...prev, img3: link }));
   };
-  const addProduct = () => {
-    console.log(product);
+  useEffect(() => {
+    if (id) {
+      fetch(`${process.env.REACT_APP_API_URL}/api/product/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setProduct(data);
+          //console.log(data);
+        });
+      fetch(`${process.env.REACT_APP_API_URL}/api/product/category`)
+        .then((response) => response.json())
+        .then((data) => {
+          setCategory(data);
+          // console.log(data);
+        });
+      return () => {};
+    }
+  }, [id]);
+  const onUpdate = () => {
+    //console.log(product);
     try {
       toast.promise(
         axios({
           method: "post",
-          url: `${process.env.REACT_APP_API_URL}/api/product/addproduct`,
+          url: `${process.env.REACT_APP_API_URL}/api/product/update`,
           data: product,
           headers: { "Content-Type": "multipart/form-data" },
         }).then((res) => {
           //   console.log(res.data);
           if (res.data && res.data?.affectedRows) {
-            toast.success("Product Inserted");
-            setProduct({
-              title: "",
-              description: "",
-              price: 0,
-              category_id: "",
-              img: "",
-              img2: "",
-              img3: "",
-              sku: "",
-              note: "",
-              stock: "In",
-            });
-            navigate("/addproduct");
+            toast.success(res.data.message);
           }
         }),
         {
@@ -90,15 +84,15 @@ const AddProduct = () => {
     img2,
     img3,
   } = product;
-
   return (
     <>
       {product && (
         <div className="px-2 lg:px-5">
           <div className="w-full lg:w-1/2 mx-auto flex flex-col space-y-4">
             <h1 className="text-xl lg:text-3xl font-bold text-center py-4">
-              ADD PRODUCT
+              UPDATE PRODUCT
             </h1>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               <div className="flex flex-col space-y-2">
                 <label for="title" className="text-sm text-gray-500">
@@ -174,25 +168,30 @@ const AddProduct = () => {
                   className="rounded  border-1 outline-none border-gray-200"
                   onChange={handleChange}
                 >
-                  <option value="In">IN STOCK</option>
-                  <option value="Out">STOCK OUT</option>
+                  <option value="In" selected={"In" == stock}>
+                    IN STOCK
+                  </option>
+                  <option value="Out" selected={"Out" == stock}>
+                    STOCK OUT
+                  </option>
                 </select>
               </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
               <div className="flex flex-col space-y-2 ">
                 <label className="text-sm text-gray-500">Cover Image</label>
-                <UploadImage setImg={setCoverImg} />
+                <UploadImage setImg={setCoverImg} imgLink={img} />
               </div>
               <div className="flex flex-col space-y-2 ">
                 <label className="text-sm text-gray-500">2nd Image</label>
-                <UploadImage setImg={set2ndImg} />
+                <UploadImage setImg={set2ndImg} imgLink={img2} />
               </div>
               <div className="flex flex-col space-y-2 ">
                 <label className="text-sm text-gray-500">3rd Image</label>
-                <UploadImage setImg={set3rdImg} />
+                <UploadImage setImg={set3rdImg} imgLink={img3} />
               </div>
             </div>
+
             <div className="flex flex-col space-y-2">
               <label className="text-sm text-gray-500">Description</label>
               <TextEditor value={description} setDescription={setDescription} />
@@ -200,11 +199,14 @@ const AddProduct = () => {
             <div className="flex flex-row justify-center space-x-5">
               <button
                 onClick={() => {
-                  window.confirm("Are You Sure") && addProduct();
+                  window.confirm("Are You Sure") && onUpdate();
                 }}
                 className="px-10 py-2 bg-orange-500 text-white rounded"
               >
-                ADD PRODUCT
+                Update
+              </button>
+              <button className="px-10 py-2 bg-red-600 text-white rounded">
+                Delete
               </button>
             </div>
           </div>
@@ -214,4 +216,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default EditProduct;
