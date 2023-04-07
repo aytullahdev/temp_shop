@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Catagory = () => {
   return (
@@ -11,6 +12,12 @@ const Catagory = () => {
         <div className="bg-gradient-to-r from-fuchsia-600 to-pink-600 flex justify-center items-center p-5 text-white rounded">
           WOMENS
         </div>
+        <Link
+          to="/addproduct"
+          className="bg-gradient-to-r from-fuchsia-600 to-pink-600 flex justify-center items-center p-5 text-white rounded"
+        >
+          ADD PRODUCT
+        </Link>
       </div>
     </div>
   );

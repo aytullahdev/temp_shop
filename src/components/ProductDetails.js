@@ -5,18 +5,29 @@ import img2 from "../img/2.png";
 import img3 from "../img/3.png";
 import img4 from "../img/4.png";
 import { Accordion } from "flowbite-react";
-import ProductCard from "./ProductCard";
+import parser from "html-react-parser";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const [isZoom, setIsZoom] = useState(false);
+  const [product, setProduct] = useState({});
   const images = [img, img2, img3, img4];
   useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+    if (id) {
+      window.scrollTo(0, 0);
+      fetch(`http://localhost:9003/api/product/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setProduct(data);
+          console.log(data);
+        });
+      return () => {};
+    }
+  }, [id]);
   return (
     <div id="product">
       <div className="grid md:grid-cols-2 gap-4 mx-5 mt-5">
-        <div className="flex justify-center relative">
+        <div className="flex justify-center relative  h-fit">
           {!isZoom && (
             <button
               onClick={() => {
@@ -69,9 +80,9 @@ const ProductDetails = () => {
             alt=""
           />
         </div>
-        <div>
+        <div className="">
           <h1 className="font-semibold text-3xl mb-3">
-            Front Back Digital Print Premium Soft Cotton Sleeves
+            {product && product.title}
           </h1>
           <h3 className="font-bold text-xl mb-2">
             Availability: <span className="font-normal">In Stock</span>
@@ -120,21 +131,7 @@ const ProductDetails = () => {
               <span className="text-center">BUY IT NOW</span>
             </button>
           </div>
-          <div className="my-3">
-            <h1 className="mb-3 text-xl font-semibold">Product Details</h1>
-            <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside">
-              <li className="text-transform: capitalize">
-                TOP: Digital Print Premium Soft Cotton with sequence work.
-              </li>
-              <li className="text-transform: capitalize">
-                DUPATTA: digital print premium soft cotton with pure dupatta.
-              </li>
-              <li className="text-transform: capitalize">
-                TROUSER: 100% COTTON.
-              </li>
-              <li>Stitched</li>
-            </ul>
-          </div>
+
           <div>
             <Accordion alwaysOpen={true}>
               <Accordion.Panel>
@@ -159,14 +156,31 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-      <div className="mx-2 mt-5">
-        <h1 className="mb-3 text-xl font-semibold">You may also like</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
-          <ProductCard id="1" zoom={false} />
-          <ProductCard id="0" zoom={true} />
-          <ProductCard id="2" zoom={false} />
-          <ProductCard id="3" zoom={false} />
+      <div className="mx-2 lg:mx-5">
+        <div className="my-3 ">
+          <h1 className="mb-3 text-xl font-semibold">Product Details</h1>
+          <div className="jodit-wysiwyg">
+            {product && product.description && (
+              <div>{parser(product.description)}</div>
+            )}
+          </div>
+          <div>
+            <h1 className="text-xl lg:3xl  font-bold py-4">
+              Shipping & Returns
+            </h1>
+            <h1 className="mb-3 tex-xl font-semibold">Delivery Time:</h1>
+            <p>Inside Dhaka within 48 hours & outside Dhaka 07 working days.</p>
+            <h1 className="mb-3 mt-3 tex-xl font-semibold">Return Policy:</h1>
+            <p>
+              Kindly confirm your order once you are sure. Please check your
+              product in front of delivery man. We don't accept returns unless
+              the product is defective.
+            </p>
+          </div>
         </div>
+      </div>
+      <div className="mx-2 lg:mx-5 mt-5">
+        <h1 className="mb-3 text-xl font-semibold">You may also like</h1>
       </div>
     </div>
   );
