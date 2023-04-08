@@ -11,9 +11,9 @@ const ProductDetails = () => {
   const [isZoom, setIsZoom] = useState(false);
   const images = [img, img2, img3, img4];
   const [quantity,setQuantity] = useState(1);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   const handleQuantity = (event)=>{
     event.preventDefault();
