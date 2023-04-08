@@ -69,9 +69,8 @@ const ProductCard = (props) => {
           Premium Soft cotton SLEEVES
         </p>
         <div className="  text-[12px] font-normal  mt-2  ">
-          <span className=" flex justify-around items-center">
-            <span className="font-bold ">Price: </span>{" "}
-            <span className=" bg-gray-500  text-white rounded p-1">1500TK</span>
+          <span className=" flex items-center justify-center">
+            <span className="text-md font-bold text-blue-800">TK 1500</span>
           </span>
           {/* <Link
             to={`/product/${props.id}`}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import img from "../img/1.png";
 import img2 from "../img/2.png";
 import img3 from "../img/3.png";
@@ -7,13 +7,14 @@ import img4 from "../img/4.png";
 import { Accordion } from "flowbite-react";
 import ProductCard from "./ProductCard";
 const ProductDetails = () => {
+  const {pathName} = useLocation();
   const { id } = useParams();
   const [isZoom, setIsZoom] = useState(false);
   const images = [img, img2, img3, img4];
   const [quantity,setQuantity] = useState(1);
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[pathName]);
 
   const handleQuantity = (event)=>{
     event.preventDefault();
