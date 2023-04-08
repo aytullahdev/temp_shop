@@ -31,9 +31,9 @@ const Navbar = () => {
           </svg>
         </button>
         <div className="text-xl">
-          <h1>Catagory</h1>
+          <h1>Category</h1>
           <Link
-            to="/catagory/man"
+            to="/category/man"
             className="pl-5 py-1 my-2 text-[13px]  hover:bg-white/40 hover:backdrop-blur-md rounded"
           >
             Man Collection

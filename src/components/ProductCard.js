@@ -61,12 +61,11 @@ const ProductCard = ({ product }) => {
         />
       </div>
       <div>
-        <p className="text-[10px]">{title}</p>
-        <div className="  text-[12px] font-normal  mt-2  ">
-          <span className=" flex justify-around items-center">
-            <span className="font-bold ">Price: </span>{" "}
-            <span className=" bg-gray-500  text-white rounded p-1">
-              {price}TK
+        <p className="text-[10px] md:text-[12px] lg:text-[15px]">{title}</p>
+        <div className="text-[12px] md:text-[12px] lg:text-[17px] font-normal  mt-2  ">
+          <span className=" flex items-center justify-center">
+            <span className="text-md md:text-xl lg:text-2xl font-bold text-blue-800">
+              TK {price}
             </span>
           </span>
           {/* <Link

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Accordion } from "flowbite-react";
 import parser from "html-react-parser";
 
 const ProductDetails = () => {
+  const { pathName } = useLocation();
   const { id } = useParams();
   const [isZoom, setIsZoom] = useState(false);
   const [product, setProduct] = useState({});
@@ -21,6 +23,31 @@ const ProductDetails = () => {
     }
   }, [id]);
   const { title, price, category_id, description, img, stock } = product;
+
+  const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathName]);
+
+  const handleQuantity = (event) => {
+    event.preventDefault();
+    const val = event.target.value;
+    setQuantity(parseInt(val));
+  };
+  const quantityPlus = (event) => {
+    event.preventDefault();
+    setQuantity((quantity) => quantity + 1);
+  };
+  const quantityMinus = (event) => {
+    event.preventDefault();
+    if (quantity <= 1) setQuantity(1);
+    else setQuantity((quantity) => quantity - 1);
+  };
+  const handleCart = (event) => {
+    event.preventDefault();
+    console.log(quantity);
+  };
+
   return (
     <div id="product">
       <div className="grid md:grid-cols-2 gap-4 mx-5 mt-5">
@@ -70,7 +97,7 @@ const ProductDetails = () => {
             </button>
           )}
           <img
-            className={` px-4  duration-300 rounded ${
+            className={`lg:h-[650px] px-4  duration-300 rounded ${
               isZoom ? "scale-150" : "scale-100"
             }`}
             src={img}
@@ -95,7 +122,7 @@ const ProductDetails = () => {
               id="sizes"
               className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             >
-              <option selected>Choose a Size</option>
+              <option defaultValue="S-38">Choose a Size</option>
               <option value="sm">S-38</option>
               <option value="md">M-40</option>
               <option value="lg">L-44</option>
@@ -103,17 +130,25 @@ const ProductDetails = () => {
           </div>
           <div className="my-3">
             <h1 className="mb-3 text-xl font-semibold">Quantity</h1>
-            <div className="border-2 border-black flex w-2/4">
-              <button className="w-[50px] text-2xl">+</button>
+            <div className="border-2 border-black flex w-[150px]">
+              <button onClick={quantityMinus} className="w-[50px] text-2xl">
+                -
+              </button>
               <input
                 className="w-[50px] text-center border-x-2 border-y-0 border-black"
                 type="number"
+                min="1"
+                onChange={handleQuantity}
+                value={quantity}
               />
-              <button className="w-[50px] text-2xl">-</button>
+              <button onClick={quantityPlus} className="w-[50px] text-2xl">
+                +
+              </button>
             </div>
           </div>
           <div>
             <button
+              onClick={handleCart}
               type="button"
               className="w-full py-3 bg-blue-800 text-white font-semibold text-2xl mb-3"
             >
