@@ -83,7 +83,7 @@ const ProductDetails = () => {
             </button>
           )}
           <img
-            className={` px-4  duration-300 rounded ${
+            className={`lg:h-[650px] px-4  duration-300 rounded ${
               isZoom ? "scale-150" : "scale-100"
             }`}
             src={images[id]}
@@ -183,7 +183,7 @@ const ProductDetails = () => {
       </div>
       <div className="mx-2 mt-5">
         <h1 className="mb-3 text-xl font-semibold">You may also like</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
           <ProductCard id="1" zoom={false} />
           <ProductCard id="0" zoom={true} />
           <ProductCard id="2" zoom={false} />

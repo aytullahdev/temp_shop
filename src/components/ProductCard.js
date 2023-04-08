@@ -58,19 +58,19 @@ const ProductCard = (props) => {
           </button>
         )} */}
         <img
-          className={` w-auto h-40 mx-auto  duration-300 rounded`}
+          className={` w-auto h-40 lg:h-60 md:h-50 mx-auto  duration-300 rounded `}
           src={images[props.id]}
           alt=""
         />
       </div>
       <div>
-        <p className="text-[10px]">
-          <span className="font-semibold">FRONT BACK </span>Digital Print
+        <p className="text-[10px] md:text-[12px] lg:text-[15px]">
+          <span className="font-semibold lg:font-bold">FRONT BACK </span>Digital Print
           Premium Soft cotton SLEEVES
         </p>
-        <div className="  text-[12px] font-normal  mt-2  ">
+        <div className="text-[12px] md:text-[12px] lg:text-[17px] font-normal  mt-2  ">
           <span className=" flex items-center justify-center">
-            <span className="text-md font-bold text-blue-800">TK 1500</span>
+            <span className="text-md md:text-xl lg:text-2xl font-bold text-blue-800">TK 1500</span>
           </span>
           {/* <Link
             to={`/product/${props.id}`}
